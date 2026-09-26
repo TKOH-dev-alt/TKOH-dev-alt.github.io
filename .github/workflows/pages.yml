@@ -28,10 +28,22 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Build allowlisted public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir _site
+          cp index.html styles.css app.js CNAME _site/
+          if find _site -type f \( -name '*.map' -o -iname '*dashboard*' -o -iname '*.zip' \) | grep -q .; then
+            echo "Unexpected non-public artifact in Pages output" >&2
+            exit 1
+          fi
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy
         id: deployment
