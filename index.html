@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TKOH Wellness — The Key of Happiness</title>
   <meta name="description" content="TKOH Wellness connects you with certified mental health professionals through secure video sessions, guided mindfulness tools, and 24/7 AI support.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Lora:ital@0;1&display=swap" rel="stylesheet">
@@ -574,9 +576,9 @@
       <!-- Pane 0 -->
       <div id="policy-pane-0" class="policy-card">
         <h3>Data Collection &amp; Privacy</h3>
-        <p>We collect only the minimum data required to provide mental healthcare services. Personal identifiers, session content, and clinical notes are never shared with third parties without explicit consent. We comply with India's DPDP Act 2023 and international GDPR standards.</p>
+        <p>This static demo does not collect or store healthcare data. Before production use, a separately hosted backend must define data minimisation, consent, retention, access controls, incident response, and applicable legal compliance; this repository does not certify DPDP Act or GDPR compliance.</p>
         <h3>End-to-End Encryption</h3>
-        <p>All video sessions use AES-256 encryption with ephemeral session keys. Your conversations, mood logs, and health data are encrypted at rest and in transit using industry-leading protocols. Not even TKOH staff can access your session content.</p>
+        <p>This public demo does not run video sessions or collect health data. A production service must provide and independently verify encryption, access controls, consent, retention, and audit logging through a secure backend.</p>
         <h3>Data Retention</h3>
         <p>Clinical session data is retained for the legally mandated minimum period. You may request complete deletion of your account and all associated data at any time via your account settings or by contacting our Data Protection Officer at privacy@tkohwellness.com.</p>
       </div>
@@ -681,7 +683,7 @@
             <div class="vp-label">Session Details</div>
             <div class="vp-detail-row"><span class="vp-detail-label">Therapist</span><span class="vp-detail-val">Dr. Ananya Gupta</span></div>
             <div class="vp-detail-row"><span class="vp-detail-label">Specialty</span><span class="vp-detail-val">Anxiety &amp; Stress</span></div>
-            <div class="vp-detail-row"><span class="vp-detail-label">Encryption</span><span class="vp-detail-val" style="color:var(--accent2)">🔐 AES-256</span></div>
+            <div class="vp-detail-row"><span class="vp-detail-label">Encryption</span><span class="vp-detail-val" style="color:var(--accent2)">🔒 Backend required</span></div>
             <div class="vp-detail-row"><span class="vp-detail-label">Status</span><span class="vp-detail-val" style="color:var(--success)">● Connecting...</span></div>
           </div>
           <div>
@@ -765,14 +767,14 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     MODAL: AUTHENTICATION (Login / Sign Up)
+     MODAL: BACKEND AUTHENTICATION BOUNDARY
 ═══════════════════════════════════════════════════════════ -->
 <div class="modal-backdrop hidden" id="auth-modal">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeModal('auth-modal')">✕</button>
     <div style="padding:24px 28px 0">
       <div style="font-size:22px;font-weight:900;margin-bottom:4px">Welcome to TKOH 🌟</div>
-      <div style="font-size:14px;color:var(--text-3);margin-bottom:16px">Your journey to inner peace starts here.</div>
+      <div style="font-size:14px;color:var(--text-3);margin-bottom:16px">Account features are not available in this static demo.</div>
     </div>
     <div class="modal-tabs-bar">
       <button class="m-tab active" id="auth-tab-login"  onclick="switchAuthTab('login')">Log In</button>
@@ -782,11 +784,11 @@
     <div class="modal-body" id="login-form-body">
       <div class="form-grp">
         <label class="form-lbl">Email Address</label>
-        <input type="email" class="form-inp" id="login-email" placeholder="you@example.com">
+        <input type="email" class="form-inp" id="login-email" placeholder="you@example.com" autocomplete="username" disabled>
       </div>
       <div class="form-grp">
         <label class="form-lbl">Password</label>
-        <input type="password" class="form-inp" id="login-pass" placeholder="••••••••">
+        <input type="password" class="form-inp" id="login-pass" placeholder="••••••••" autocomplete="current-password" disabled>
       </div>
       <label class="form-lbl" style="margin-bottom:8px;display:block">Login As</label>
       <div class="role-select-grid" id="login-role-grid">
@@ -801,22 +803,19 @@
           <div class="role-opt-sub">Manage clients &amp; sessions</div>
         </div>
       </div>
-      <div class="hint-card">
-        <strong>🔑 Test Credentials</strong>
-        Patient: user@test.com / pass123 &nbsp;|&nbsp; Therapist: doc@test.com / pass123
-      </div>
+      <div class="hint-card">🔒 No credentials are accepted here. GitHub Pages cannot securely authenticate users or protect health data.</div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px" onclick="doLogin()">
-        Log In to TKOH →
+        Sign-in requires a secure backend →
       </button>
     </div>
     <!-- SIGNUP FORM -->
     <div class="modal-body" id="signup-form-body" style="display:none">
       <div class="form-row-2">
-        <div class="form-grp"><label class="form-lbl">First Name</label><input type="text" class="form-inp" id="su-fname" placeholder="Priya"></div>
-        <div class="form-grp"><label class="form-lbl">Last Name</label><input type="text" class="form-inp" id="su-lname" placeholder="Sharma"></div>
+        <div class="form-grp"><label class="form-lbl">First Name</label><input type="text" class="form-inp" id="su-fname" placeholder="Priya" autocomplete="given-name" disabled></div>
+        <div class="form-grp"><label class="form-lbl">Last Name</label><input type="text" class="form-inp" id="su-lname" placeholder="Sharma" autocomplete="family-name" disabled></div>
       </div>
-      <div class="form-grp"><label class="form-lbl">Email</label><input type="email" class="form-inp" id="su-email" placeholder="you@example.com"></div>
-      <div class="form-grp"><label class="form-lbl">Password</label><input type="password" class="form-inp" id="su-pass" placeholder="Create a strong password"></div>
+      <div class="form-grp"><label class="form-lbl">Email</label><input type="email" class="form-inp" id="su-email" placeholder="you@example.com" autocomplete="email" disabled></div>
+      <div class="form-grp"><label class="form-lbl">Password</label><input type="password" class="form-inp" id="su-pass" placeholder="Create a strong password" autocomplete="new-password" disabled></div>
       <label class="form-lbl" style="margin-bottom:8px;display:block">Register As</label>
       <div class="role-select-grid" id="signup-role-grid">
         <div class="role-opt sel" onclick="selectRole('signup','user',this)">
@@ -842,7 +841,7 @@
         </select>
       </div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px" onclick="doSignup()">
-        Create Free Account →
+        Account creation requires a secure backend →
       </button>
     </div>
   </div>
